@@ -8,9 +8,10 @@ import (
 	"strings"
 )
 
-/*
-replaces chars with superscript versions
-*/
+// SuperLoop replaces chars in a string with the superscript versions.
+//
+// It loops through the normal characters in a slice and replaces them in the string one at a time.
+// Depending on the bools given to math_flag and ext_flag the slice is extended with non-numerical superscript characters.
 func SuperLoop(original_string string, math_flag bool, ext_flag bool) {
 	normal := []string{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
 	normal_math := []string{"+", "-", "=", "(", ")"}
@@ -37,9 +38,3 @@ func SuperLoop(original_string string, math_flag bool, ext_flag bool) {
 
 	fmt.Println(original_string)
 }
-
-/*
-- Get string / strings from args
-- Check if user wants all symbols or just numerical
-	- if all symbols add extra chars to check slices
-*/
