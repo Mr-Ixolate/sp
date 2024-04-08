@@ -6,6 +6,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"regexp"
 
 	"github.com/Mr-Ixolate/sp/internal/raise"
 	"github.com/spf13/cobra"
@@ -37,8 +38,15 @@ Note, not suitable for entire expressions as it is not smart about what is super
 		math_flag, _ := cmd.Flags().GetBool("math")
 		ext_flag, _ := cmd.Flags().GetBool("extra")
 
+		find_up := regexp.MustCompile(`\^`)
+
 		for _, value := range args {
-			raise.SuperLoop(value, math_flag, ext_flag)
+			// decide which function to use, if there are no "^" then it can yse the simple one
+			if find_up.MatchString(value) {
+				raise.SuperUpReg(value, math_flag, ext_flag)
+			} else {
+				raise.SuperSimple(value, math_flag, ext_flag)
+			}
 		}
 	},
 }
@@ -62,6 +70,6 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	rootCmd.Flags().BoolP("math", "m", false, "extra mathmatical symbols")
-	rootCmd.Flags().BoolP("extra", "e", false, "i and n")
+	rootCmd.Flags().BoolP("math", "m", false, "add mathmatical symbols note: '-' already included")
+	rootCmd.Flags().BoolP("extra", "x", false, "i and n")
 }
