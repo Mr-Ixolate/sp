@@ -8,11 +8,10 @@ import (
 	"strings"
 )
 
-// SuperLoop replaces chars in a string with the superscript versions.
+// Returns normal and superscript set of characters to be found.
 //
-// It loops through the normal characters in a slice and replaces them in the string one at a time.
-// Depending on the bools given to math_flag and ext_flag the slice is extended with non-numerical superscript characters.
-func SuperLoop(original_string string, math_flag bool, ext_flag bool) {
+// Depending on the math_flag and ext_flag the slice is extended with non-numerical superscript characters.
+func mapper(math_flag bool, ext_flag bool) ([]string, []string) {
 	normal := []string{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
 	normal_math := []string{"+", "-", "=", "(", ")"}
 	normal_ext := []string{"i", "n"}
@@ -30,6 +29,14 @@ func SuperLoop(original_string string, math_flag bool, ext_flag bool) {
 		normal = append(normal, normal_ext...)
 		superscript = append(superscript, superscript_ext...)
 	}
+	return normal, superscript
+}
+
+// Replaces chars in a string with the superscript versions if they exist.
+//
+// It loops through the normal characters in a slice and replaces them in the string one at a time.
+func SuperLoop(original_string string, math_flag bool, ext_flag bool) {
+	normal, superscript := mapper(math_flag, ext_flag)
 
 	for i, char := range normal {
 
