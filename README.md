@@ -7,6 +7,7 @@ Simple command that can turn numbers and some additonal mathmatical symbols to t
 Takes unlimited arguments and returns each on a new line.
 
 ```
-sp m2
->>> m²
+super kWhm2 2^2
+>>>kWhm²
+>>>2²
 ```

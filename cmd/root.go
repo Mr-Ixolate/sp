@@ -8,19 +8,20 @@ import (
 	"os"
 	"regexp"
 
-	"github.com/Mr-Ixolate/sp/internal/raise"
+	"github.com/Mr-Ixolate/super/internal/raise"
 	"github.com/spf13/cobra"
 )
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "sp",
-	Short: "return given text with characters replaced with unicode superscript where characters match",
+	Use:   "super",
+	Short: "Return given text with characters replaced with unicode superscript where characters match",
 	Long: `Replaces numerical and some mathmetical symbols in a string with their superscript equivalents as in some units of measurement. 
 For example:
 
-sp m2
->>> m²
+super kWhm2 2^2
+>>>kWhm²
+>>>2²
 
 Note, not suitable for entire expressions as it is not smart about what is superscripted, best used for short sections.`,
 	// Uncomment the following line if your bare application

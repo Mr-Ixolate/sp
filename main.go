@@ -5,7 +5,7 @@ Simple command that replaces the numbers and symbols in strings with the supersc
 */
 package main
 
-import "github.com/Mr-Ixolate/sp/cmd"
+import "github.com/Mr-Ixolate/super/cmd"
 
 func main() {
 	cmd.Execute()

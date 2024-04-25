@@ -1,4 +1,4 @@
-module github.com/Mr-Ixolate/sp
+module github.com/Mr-Ixolate/super
 
 go 1.22.0
 
